@@ -80,7 +80,7 @@ export default function NuevaOperacionPage() {
 
               <div className="mt-4 border-2 border-dashed border-border rounded-xl p-6 flex flex-col items-center gap-2 cursor-pointer hover:border-primary/30 transition-all bg-surface2">
                 <Camera size={24} className="text-gray" />
-                <p className="text-xs text-gray text-center">Sacale una foto al título<br /><span className="text-primary font-medium">Próximamente: autocarga de datos</span></p>
+                <p className="text-xs text-gray text-center">Sacale una foto al título<br /><span className="text-primary font-medium">Autocarga de datos con IA</span></p>
               </div>
             </div>
 

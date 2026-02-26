@@ -35,7 +35,7 @@ export default function OperacionPage({ params }: { params: Promise<{ id: string
       </div>
 
       {/* Vehicle info card */}
-      <div className="px-5 -mt-3 mb-4">
+      <div className="px-5 pt-4 mb-4">
         <div className="bg-white border border-border rounded-2xl p-4 shadow-sm">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">

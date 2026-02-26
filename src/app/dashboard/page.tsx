@@ -39,7 +39,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Operations */}
-      <div className="px-5 -mt-4 flex flex-col gap-4">
+      <div className="px-5 pt-4 flex flex-col gap-4">
         {MOCK_OPERATIONS.map(op => (
           <OperationCard key={op.id} operation={op} steps={MOCK_STEPS[op.id] || []} />
         ))}

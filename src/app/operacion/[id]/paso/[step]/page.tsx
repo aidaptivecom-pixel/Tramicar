@@ -53,7 +53,7 @@ export default function StepDetailPage({ params }: { params: Promise<{ id: strin
         </div>
       </div>
 
-      <div className="px-5 -mt-3 flex flex-col gap-4">
+      <div className="px-5 pt-4 flex flex-col gap-4">
         {/* Step specific content */}
         {StepComponent && <StepComponent />}
 
