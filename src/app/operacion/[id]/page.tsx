@@ -17,34 +17,36 @@ export default function OperacionPage({ params }: { params: Promise<{ id: string
   return (
     <div className="min-h-screen bg-bg pb-24">
       {/* Header */}
-      <div className="px-5 pt-12 pb-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Link href="/dashboard" className="w-10 h-10 bg-surface border border-border2 rounded-xl flex items-center justify-center">
-            <ArrowLeft size={18} />
-          </Link>
-          <div>
-            <h1 className="font-display text-lg font-bold">{operation.vehicle_brand} {operation.vehicle_model}</h1>
-            <p className="text-xs text-gray">{operation.vehicle_year} · {operation.vehicle_plate}</p>
+      <div className="bg-primary px-5 pt-12 pb-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <Link href="/dashboard" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
+              <ArrowLeft size={18} className="text-white" />
+            </Link>
+            <div>
+              <h1 className="font-display text-lg font-bold text-white">{operation.vehicle_brand} {operation.vehicle_model}</h1>
+              <p className="text-xs text-white/60">{operation.vehicle_year} · {operation.vehicle_plate}</p>
+            </div>
           </div>
+          <button className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
+            <Share2 size={16} className="text-white" />
+          </button>
         </div>
-        <button className="w-10 h-10 bg-surface border border-border2 rounded-xl flex items-center justify-center">
-          <Share2 size={16} className="text-gray" />
-        </button>
       </div>
 
       {/* Vehicle info card */}
-      <div className="px-5 mb-4">
-        <div className="bg-surface border border-border2 rounded-2xl p-4">
+      <div className="px-5 -mt-3 mb-4">
+        <div className="bg-white border border-border rounded-2xl p-4 shadow-sm">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-accent/10 border border-accent/20 rounded-xl flex items-center justify-center">
-                <Car size={18} className="text-accent" />
+              <div className="w-10 h-10 bg-primary-light border border-primary/10 rounded-xl flex items-center justify-center">
+                <Car size={18} className="text-primary" />
               </div>
               <div>
-                <span className="font-display text-lg font-bold">${operation.vehicle_price.toLocaleString('es-AR')}</span>
+                <span className="font-display text-lg font-bold text-text">${operation.vehicle_price.toLocaleString('es-AR')}</span>
                 <div className="flex items-center gap-2 mt-0.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-                  <span className="text-[11px] text-gray2">Operación en curso</span>
+                  <span className="text-[11px] text-gray">Operación en curso</span>
                 </div>
               </div>
             </div>
@@ -55,7 +57,7 @@ export default function OperacionPage({ params }: { params: Promise<{ id: string
 
       {/* Steps */}
       <div className="px-5">
-        <h2 className="font-display font-semibold text-sm text-gray2 mb-3">Pasos de la transferencia</h2>
+        <h2 className="font-display font-semibold text-sm text-gray mb-3">Pasos de la transferencia</h2>
         <div className="flex flex-col gap-3">
           {steps.map((step, i) => (
             <StepCard
