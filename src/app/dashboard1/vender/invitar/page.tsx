@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
-import { ArrowLeft, Share2, MessageCircle, Copy, CheckCircle2, Link as LinkIcon, QrCode } from 'lucide-react'
+import { ArrowLeft, Share2, MessageCircle, Copy, CheckCircle2, Link as LinkIcon, QrCode, FileText, Camera, ClipboardCheck, Bell, Upload } from 'lucide-react'
 import Link from 'next/link'
 
 export default function InvitarPage() {
@@ -111,7 +111,66 @@ export default function InvitarPage() {
         <div className="bg-primary-light border border-primary/10 rounded-2xl p-4 text-center">
           <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-3" />
           <p className="text-sm font-semibold text-primary">Esperando al comprador...</p>
-          <p className="text-xs text-text2 mt-1">Te notificamos cuando se sume a la operación</p>
+          <p className="text-xs text-text2 mt-1">
+            <Bell size={12} className="inline mr-1" />
+            Te avisamos por WhatsApp cuando el comprador complete su parte
+          </p>
+        </div>
+
+        {/* Documentation checklist */}
+        <div className="bg-white border border-border rounded-2xl p-5">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-amber-light border border-amber/10 rounded-xl flex items-center justify-center">
+                <ClipboardCheck size={20} className="text-amber" />
+              </div>
+              <div>
+                <h2 className="font-display font-semibold text-text">Tu documentación</h2>
+                <p className="text-xs text-gray">Mientras esperás, andá preparando</p>
+              </div>
+            </div>
+            <span className="text-xs font-bold text-primary bg-primary-light px-2.5 py-1 rounded-full">2/5</span>
+          </div>
+
+          <div className="space-y-3">
+            {/* Done items */}
+            <div className="flex items-center gap-3 p-3 bg-green-light/50 rounded-xl">
+              <CheckCircle2 size={20} className="text-green shrink-0" />
+              <span className="text-sm text-text font-medium">Vehículo identificado</span>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-green-light/50 rounded-xl">
+              <CheckCircle2 size={20} className="text-green shrink-0" />
+              <span className="text-sm text-text font-medium">Pre-diagnóstico aprobado</span>
+            </div>
+
+            {/* Pending items */}
+            <button className="w-full flex items-center gap-3 p-3 bg-surface2 rounded-xl hover:bg-surface3 transition-all text-left group">
+              <div className="w-5 h-5 rounded-full border-2 border-amber shrink-0" />
+              <div className="flex-1">
+                <span className="text-sm text-text font-medium">Título del auto</span>
+                <p className="text-[10px] text-gray">Foto del título o subí el PDF digital</p>
+              </div>
+              <Upload size={16} className="text-gray2 group-hover:text-primary transition-colors" />
+            </button>
+
+            <button className="w-full flex items-center gap-3 p-3 bg-surface2 rounded-xl hover:bg-surface3 transition-all text-left group">
+              <div className="w-5 h-5 rounded-full border-2 border-border shrink-0" />
+              <div className="flex-1">
+                <span className="text-sm text-text font-medium">Cédula verde</span>
+                <p className="text-[10px] text-gray">Foto frente y dorso</p>
+              </div>
+              <Camera size={16} className="text-gray2 group-hover:text-primary transition-colors" />
+            </button>
+
+            <button className="w-full flex items-center gap-3 p-3 bg-surface2 rounded-xl hover:bg-surface3 transition-all text-left group">
+              <div className="w-5 h-5 rounded-full border-2 border-border shrink-0" />
+              <div className="flex-1">
+                <span className="text-sm text-text font-medium">Verificación policial</span>
+                <p className="text-[10px] text-gray">Subí el comprobante cuando lo tengas</p>
+              </div>
+              <FileText size={16} className="text-gray2 group-hover:text-primary transition-colors" />
+            </button>
+          </div>
         </div>
       </div>
 
