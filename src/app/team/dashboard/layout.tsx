@@ -6,12 +6,14 @@ import { getUser, logout } from '../store'
 import type { TeamUser } from '../data'
 import {
   LayoutDashboard, Map, Users, Lightbulb, AlertTriangle, FolderOpen, Activity,
-  LogOut, Menu, X, ChevronLeft
+  LogOut, Menu, X, ChevronLeft, BookOpen, Shield
 } from 'lucide-react'
 
 const NAV_ITEMS = [
   { href: '/team/dashboard', label: 'Overview', icon: LayoutDashboard },
   { href: '/team/dashboard/roadmap', label: 'Roadmap', icon: Map },
+  { href: '/team/dashboard/decisiones', label: 'Decisiones', icon: BookOpen },
+  { href: '/team/dashboard/riesgos', label: 'Riesgos', icon: Shield },
   { href: '/team/dashboard/reuniones', label: 'Reuniones', icon: Users },
   { href: '/team/dashboard/ideas', label: 'Ideas', icon: Lightbulb },
   { href: '/team/dashboard/trabas', label: 'Trabas', icon: AlertTriangle },

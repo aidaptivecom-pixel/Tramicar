@@ -171,3 +171,124 @@ export const INITIAL_ACTIVITIES: Activity[] = [
   { id: 'a7', user: 'matias', action: 'desplegó', target: 'MVP en Vercel', timestamp: '2026-02-25T14:00:00' },
   { id: 'a8', user: 'jony', action: 'se unió a', target: 'Tramicar', timestamp: '2026-02-25T10:00:00' },
 ]
+
+// === NEW: Decision Log ===
+
+export interface Decision {
+  id: string
+  date: string
+  title: string
+  context: string
+  decision: string
+  alternatives: string[]
+  rationale: string
+  decidedBy: string[]
+  impact: 'alta' | 'media' | 'baja'
+  category: 'tech' | 'negocio' | 'legal' | 'producto'
+}
+
+export const INITIAL_DECISIONS: Decision[] = [
+  {
+    id: 'd1', date: '2026-02-27', title: 'Escrow bancario tradicional, NO smart contracts',
+    context: 'Para garantizar el dinero de la transferencia vehicular necesitamos un mecanismo de escrow.',
+    decision: 'Usar escrow bancario tradicional (Bind, Ualá Business, MercadoPago)',
+    alternatives: ['Smart contracts en blockchain', 'Pago directo entre partes', 'Escrow notarial'],
+    rationale: 'Smart contracts generan ruido con reguladores argentinos (BCRA, CNV). No hay marco legal claro. Escrow bancario es conocido, regulado, y genera confianza inmediata. Blockchain queda como trazabilidad futura, no como core.',
+    decidedBy: ['matias', 'diego'],
+    impact: 'alta',
+    category: 'negocio',
+  },
+  {
+    id: 'd2', date: '2026-02-27', title: 'AES-256 como badge visual, no requisito técnico',
+    context: 'Se evaluó si cifrado AES-256 es requerido por RENAPER/DNRPA para el manejo de datos personales.',
+    decision: 'No es requisito formal pero se agrega como badge visual de confianza en pasos de DNI/selfie/firma',
+    alternatives: ['No mencionarlo', 'Implementar cifrado end-to-end completo', 'Certificación ISO 27001'],
+    rationale: 'Diego (y cualquier inversor) va a valorar que mostremos seguridad. No necesitamos certificación formal para el MVP, pero el badge genera percepción de seriedad. En Beta sí implementar cifrado real.',
+    decidedBy: ['matias'],
+    impact: 'media',
+    category: 'tech',
+  },
+  {
+    id: 'd3', date: '2026-02-27', title: 'Estrategia Diego: no pedir, mostrar',
+    context: 'Diego tiene conexión directa con Alec Oxenford (Despegar, OLX). Podría abrir puertas con DNRPA/RENAPER.',
+    decision: 'No pedirle nada todavía. Mostrar avances constantes. Que él proponga involucrarse.',
+    alternatives: ['Pedirle introducción a Oxenford ahora', 'Ofrecerle equity a cambio de contactos', 'Esperar al Beta'],
+    rationale: 'Diego viene de un mundo donde le piden cosas todo el tiempo. Si ve tracción real y ejecución rápida, él solo va a querer meterse más. Es más poderoso que venga de él. "Esto es como dialéctica — en el medio nace la síntesis".',
+    decidedBy: ['matias', 'jony'],
+    impact: 'alta',
+    category: 'negocio',
+  },
+  {
+    id: 'd4', date: '2026-02-25', title: 'Sociedad 60/40 (Matias/Jony)',
+    context: 'Definición de la estructura societaria inicial de Tramicar.',
+    decision: '60% Matias (tech + producto), 40% Jony (comercial + operaciones)',
+    alternatives: ['50/50', '70/30', 'Incorporar a Diego como socio desde el inicio'],
+    rationale: 'Matias aporta todo el desarrollo técnico, la visión de producto, y los contactos políticos (senadores para DNRPA). Jony aporta la operación comercial y capital inicial. Diego es advisor, no socio (por ahora).',
+    decidedBy: ['matias', 'jony'],
+    impact: 'alta',
+    category: 'negocio',
+  },
+  {
+    id: 'd5', date: '2026-02-25', title: 'Stack: Next.js + Supabase + Vercel',
+    context: 'Elección de stack técnico para el MVP.',
+    decision: 'Next.js 16 (App Router) + Supabase (PostgreSQL + Auth + Storage) + Vercel (deploy)',
+    alternatives: ['React + Express + AWS', 'Flutter (mobile-first)', 'WordPress + plugins'],
+    rationale: 'Velocidad de desarrollo máxima. Matias ya domina el stack. Supabase da auth, DB, y storage gratis en free tier. Vercel deploy automático. Mobile-first con PWA, app nativa después.',
+    decidedBy: ['matias'],
+    impact: 'media',
+    category: 'tech',
+  },
+]
+
+// === NEW: Risk Register ===
+
+export interface Risk {
+  id: string
+  title: string
+  description: string
+  probability: 'alta' | 'media' | 'baja'
+  impact: 'crítico' | 'alto' | 'medio' | 'bajo'
+  mitigation: string
+  owner: string
+  status: 'activo' | 'mitigado' | 'materializado'
+  category: 'regulatorio' | 'tech' | 'mercado' | 'financiero' | 'operativo'
+  createdAt: string
+}
+
+export const INITIAL_RISKS: Risk[] = [
+  {
+    id: 'rk1', title: 'DNRPA rechaza convenio',
+    description: 'Que la DNRPA no apruebe la integración digital de transferencias o demore años en hacerlo.',
+    probability: 'media', impact: 'crítico',
+    mitigation: 'Fase 1 funciona SIN convenio (pre-llena formularios, el trámite se hace en registro). Convenio es para Fase 2+. Contactos políticos (senadores) como plan B.',
+    owner: 'matias', status: 'activo', category: 'regulatorio', createdAt: '2026-02-27',
+  },
+  {
+    id: 'rk2', title: 'RENAPER no da acceso a verificación biométrica',
+    description: 'Sin acceso a API RENAPER, la firma biométrica no puede verificar identidad real.',
+    probability: 'media', impact: 'alto',
+    mitigation: 'Intermediarios: Nosis ID o VU Security tienen acceso a RENAPER y venden como servicio. Más caro pero viable.',
+    owner: 'diego', status: 'activo', category: 'regulatorio', createdAt: '2026-02-27',
+  },
+  {
+    id: 'rk3', title: 'MercadoLibre o Kavak lanzan algo similar',
+    description: 'Competidores grandes construyen transferencia digital integrada.',
+    probability: 'baja', impact: 'crítico',
+    mitigation: 'ML no tiene incentivo (cobra por publicación, no por trámite). Kavak está en retracción en LATAM. Nuestro diferencial es el convenio DNRPA que ellos no tienen. Si copian → acquisition target.',
+    owner: 'diego', status: 'activo', category: 'mercado', createdAt: '2026-02-27',
+  },
+  {
+    id: 'rk4', title: 'Falta de capital para operar',
+    description: 'Sin los 10k USD iniciales, no se puede pagar hosting, APIs, y operación primeros 3 meses.',
+    probability: 'media', impact: 'alto',
+    mitigation: 'Free tier de Supabase y Vercel cubren MVP. APIs de RENAPER solo se pagan cuando hay volumen. Lean operation hasta primera facturación.',
+    owner: 'jony', status: 'activo', category: 'financiero', createdAt: '2026-02-25',
+  },
+  {
+    id: 'rk5', title: 'Registros automotores no adoptan',
+    description: 'Los registros automotores prefieren seguir con el proceso manual/presencial.',
+    probability: 'media', impact: 'alto',
+    mitigation: 'Empezar con 1 registro friendly (piloto). Demostrar ahorro de tiempo y reducción de errores. Los registros cobran por trámite → más trámites = más ingresos para ellos.',
+    owner: 'jony', status: 'activo', category: 'mercado', createdAt: '2026-02-26',
+  },
+]
