@@ -48,13 +48,16 @@ export default function InvitarPage() {
 
       <div className="px-5 flex flex-col gap-4">
         {/* Vehicle summary */}
-        <div className="bg-green-light border border-green/20 rounded-2xl p-4 flex items-center gap-3">
-          <CheckCircle2 size={24} className="text-green shrink-0" />
-          <div>
-            <p className="text-sm font-semibold text-text">Vehículo verificado</p>
-            <p className="text-xs text-gray">Toyota Corolla XEI 2020 — Listo para transferir</p>
+        <Link href="/dashboard1/informes">
+          <div className="bg-green-light border border-green/20 rounded-2xl p-4 flex items-center gap-3 hover:border-green/40 transition-all cursor-pointer">
+            <CheckCircle2 size={24} className="text-green shrink-0" />
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-text">Vehículo verificado</p>
+              <p className="text-xs text-gray">Toyota Corolla XEI 2020 — Listo para transferir</p>
+            </div>
+            <span className="text-xs text-green font-medium">Ver informes →</span>
           </div>
-        </div>
+        </Link>
 
         {/* Invite options */}
         <div className="bg-white border border-border rounded-2xl p-5">

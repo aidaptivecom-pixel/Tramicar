@@ -144,21 +144,24 @@ export default function ComprarPage() {
             </div>
 
             {/* Diagnosis summary */}
-            <div className="bg-green-light border border-green/20 rounded-2xl p-4">
-              <div className="flex items-center gap-3 mb-2">
-                <Shield size={24} className="text-green" />
-                <div>
-                  <p className="text-sm font-semibold text-text">Diagnóstico del vendedor</p>
-                  <p className="text-xs text-gray">El vendedor ya verificó este vehículo</p>
+            <Link href="/dashboard1/informes">
+              <div className="bg-green-light border border-green/20 rounded-2xl p-4 hover:border-green/40 transition-all cursor-pointer">
+                <div className="flex items-center gap-3 mb-2">
+                  <Shield size={24} className="text-green" />
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-text">Diagnóstico del vendedor</p>
+                    <p className="text-xs text-gray">El vendedor ya verificó este vehículo</p>
+                  </div>
+                  <span className="text-xs text-green font-medium">Ver informes →</span>
+                </div>
+                <div className="flex gap-3 mt-2">
+                  <span className="text-xs bg-white px-2 py-1 rounded-lg text-green font-medium">{mockVehicle.diagnosis.ok} verificados ✓</span>
+                  {mockVehicle.diagnosis.warnings > 0 && (
+                    <span className="text-xs bg-white px-2 py-1 rounded-lg text-amber font-medium">{mockVehicle.diagnosis.warnings} advertencia</span>
+                  )}
                 </div>
               </div>
-              <div className="flex gap-3 mt-2">
-                <span className="text-xs bg-white px-2 py-1 rounded-lg text-green font-medium">{mockVehicle.diagnosis.ok} verificados ✓</span>
-                {mockVehicle.diagnosis.warnings > 0 && (
-                  <span className="text-xs bg-white px-2 py-1 rounded-lg text-amber font-medium">{mockVehicle.diagnosis.warnings} advertencia</span>
-                )}
-              </div>
-            </div>
+            </Link>
 
             {/* CTA */}
             <button
